@@ -1,0 +1,62 @@
+@page
+@model Web.Pages.Seguridad.RegistroModel
+@{
+    ViewData["Title"] = "Registrarse";
+}
+
+<div class="container">
+    <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto mt-5">
+        <div class="card shadow">
+            <div class="card-body p-4 p-md-5">
+                <div class="text-center mb-4">
+                    <h2 class="fw-bold">Crear Cuenta</h2>
+                    <p class="text-muted">Gestión de Productos</p>
+                </div>
+                <form method="post">
+                    <div class="input-group mb-2">
+                        <span class="input-group-text">👤</span>
+                        <input type="text" asp-for="usuario.NombreUsuario"
+                               class="form-control" placeholder="Nombre de usuario" />
+                    </div>
+                    <span asp-validation-for="usuario.NombreUsuario" class="text-danger small"></span>
+
+                    <div class="input-group mb-2 mt-2">
+                        <span class="input-group-text">📧</span>
+                        <input type="email" asp-for="usuario.CorreoElectronico"
+                               class="form-control" placeholder="Correo electrónico" />
+                    </div>
+                    <span asp-validation-for="usuario.CorreoElectronico" class="text-danger small"></span>
+
+                    <div class="input-group mb-2 mt-2">
+                        <span class="input-group-text">🔑</span>
+                        <input type="password" asp-for="usuario.Password"
+                               class="form-control" placeholder="Contraseña" />
+                    </div>
+                    <span asp-validation-for="usuario.Password" class="text-danger small"></span>
+
+                    <div class="input-group mb-3 mt-2">
+                        <span class="input-group-text">🔑</span>
+                        <input type="password" asp-for="usuario.ConfirmarPassword"
+                               class="form-control" placeholder="Confirmar contraseña" />
+                    </div>
+                    <span asp-validation-for="usuario.ConfirmarPassword" class="text-danger small"></span>
+
+                    <div class="text-danger" asp-validation-summary="All"></div>
+
+                    <div class="d-grid gap-2 mt-3">
+                        <button type="submit" class="btn btn-success btn-lg">Registrarse</button>
+                    </div>
+                </form>
+
+                <hr class="mt-4 mb-3" />
+                <div class="text-center">
+                    <a href="./Login" class="text-decoration-none">¿Ya tiene cuenta? Iniciar sesión</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

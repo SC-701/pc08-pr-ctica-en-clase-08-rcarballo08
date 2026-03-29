@@ -1,0 +1,47 @@
+@page
+@model Web.Pages.Productos.EliminarModel
+@{
+    ViewData["Title"] = "Eliminar Producto";
+}
+
+<h1>Eliminar Producto</h1>
+
+<div class="container">
+    <form method="post">
+        <div class="col-md-8">
+            <div class="card border-danger">
+                <div class="card-header bg-danger text-white">
+                    Confirmar eliminación
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">@Html.DisplayFor(m => m.producto.Nombre)</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">
+                        @Html.DisplayFor(m => m.producto.Categoria) &rsaquo; @Html.DisplayFor(m => m.producto.SubCategoria)
+                    </h6>
+                    <div class="card-text mt-3">
+                        <div class="mb-2">
+                            <b>@Html.DisplayNameFor(m => m.producto.Descripcion):</b>
+                            @Html.DisplayFor(m => m.producto.Descripcion)
+                        </div>
+                        <div class="mb-2">
+                            <b>Precio:</b> ₡@Html.DisplayFor(m => m.producto.Precio)
+                        </div>
+                        <div class="mb-2">
+                            <b>@Html.DisplayNameFor(m => m.producto.Stock):</b>
+                            @Html.DisplayFor(m => m.producto.Stock) unidades
+                        </div>
+                        <div class="mb-2">
+                            <b>@Html.DisplayNameFor(m => m.producto.CodigoBarras):</b>
+                            @Html.DisplayFor(m => m.producto.CodigoBarras)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mt-3">
+            <a type="button" class="btn btn-primary" asp-page="./Index">Regresar</a>
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+        </div>
+        <input type="hidden" name="id" value="@Model.producto.Id" />
+    </form>
+</div>

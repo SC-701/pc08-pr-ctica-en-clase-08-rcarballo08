@@ -1,0 +1,53 @@
+@page
+@model Web.Pages.Seguridad.LoginModel
+@{
+    ViewData["Title"] = "Iniciar Sesión";
+}
+
+<div class="container">
+    <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto mt-5">
+        <div class="card shadow">
+            <div class="card-body p-4 p-md-5">
+                <div class="text-center mb-4">
+                    <h2 class="fw-bold">Iniciar Sesión</h2>
+                    <p class="text-muted">Gestión de Productos</p>
+                </div>
+                <form method="post">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">📧</span>
+                        <input type="email"
+                               placeholder="Correo electrónico"
+                               asp-for="loginInfo.CorreoElectronico"
+                               class="form-control form-control-lg" />
+                    </div>
+                    <span asp-validation-for="loginInfo.CorreoElectronico" class="text-danger small"></span>
+
+                    <div class="input-group mb-3 mt-2">
+                        <span class="input-group-text">🔑</span>
+                        <input type="password"
+                               placeholder="Contraseña"
+                               asp-for="loginInfo.Password"
+                               class="form-control form-control-lg" />
+                    </div>
+                    <span asp-validation-for="loginInfo.Password" class="text-danger small"></span>
+
+                    @if (Model.token is not null && Model.token.ValidacionExitosa == false)
+                    {
+                        <div class="alert alert-warning mt-3" role="alert">
+                            ⚠️ Credenciales incorrectas. Verifique su correo y contraseña.
+                        </div>
+                    }
+
+                    <div class="d-grid gap-2 mt-4">
+                        <button class="btn btn-primary btn-lg" type="submit">Iniciar Sesión</button>
+                    </div>
+                </form>
+
+                <hr class="mt-4 mb-3" />
+                <div class="text-center">
+                    <a href="./Registro" class="text-decoration-none">¿No tiene cuenta? Registrarse</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

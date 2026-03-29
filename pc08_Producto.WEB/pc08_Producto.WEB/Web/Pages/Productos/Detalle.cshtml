@@ -1,0 +1,46 @@
+@page
+@model Web.Pages.Productos.DetalleModel
+@{
+    ViewData["Title"] = "Detalle del Producto";
+}
+
+<h1>Detalle del Producto</h1>
+
+<div class="container">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">@Html.DisplayFor(m => m.producto.Nombre)</h5>
+                <h6 class="card-subtitle mb-2 text-muted">
+                    @Html.DisplayFor(m => m.producto.Categoria) &rsaquo; @Html.DisplayFor(m => m.producto.SubCategoria)
+                </h6>
+                <div class="card-text mt-3">
+                    <div class="mb-2">
+                        <b>@Html.DisplayNameFor(m => m.producto.Descripcion):</b>
+                        @Html.DisplayFor(m => m.producto.Descripcion)
+                    </div>
+                    <div class="mb-2">
+                        <b>Precio (₡):</b>
+                        ₡@Html.DisplayFor(m => m.producto.Precio)
+                    </div>
+                    <div class="mb-2">
+                        <b>Precio (USD):</b>
+                        $@Html.DisplayFor(m => m.producto.PrecioUSD)
+                    </div>
+                    <div class="mb-2">
+                        <b>@Html.DisplayNameFor(m => m.producto.Stock):</b>
+                        @Html.DisplayFor(m => m.producto.Stock) unidades
+                    </div>
+                    <div class="mb-2">
+                        <b>@Html.DisplayNameFor(m => m.producto.CodigoBarras):</b>
+                        @Html.DisplayFor(m => m.producto.CodigoBarras)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-3">
+        <a type="button" class="btn btn-primary" asp-page="./Index">Regresar</a>
+        <a type="button" class="btn btn-warning" asp-page="./Editar" asp-route-id="@Model.producto.Id">Editar</a>
+    </div>
+</div>
